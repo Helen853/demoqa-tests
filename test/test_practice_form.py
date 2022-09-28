@@ -30,8 +30,7 @@ def test_registration_form():
     for subject in hellen.subjects:
         browser.element('#subjectsInput').type(hellen.subjects).press_enter()
 
-    #for hobbies in hellen.hobbies:
-       #browser.element(('xpath', '//label[contains(.,'"hellen.hobbies"')]')).click
+
     browser.element('#submit').press_enter()
 
 # ACT
