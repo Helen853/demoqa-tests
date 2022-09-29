@@ -13,7 +13,7 @@ def test_registration_form():
     browser.element('#firstName').type(hellen.name)
     browser.element('#lastName').type(hellen.last_name)
     browser.element('#userEmail').type(hellen.email)
-    browser.all('[for^=gender-radio]').all_by(
+    browser.all('[for^=gender-radio]').by(
         have.exact_text(hellen.gender.value)
     ).first.click()
     browser.element('#userNumber').type(hellen.user_number)
@@ -30,10 +30,9 @@ def test_registration_form():
     for subject in hellen.subjects:
         browser.element('#subjectsInput').type(hellen.subjects).press_enter()
 
-
     browser.element('#submit').press_enter()
 
-# ACT
+    # ACT
     browser.element('#example-modal-sizes-title-lg').should(be.visible).should(
         have.text('Thanks for submitting the form'))
     browser.element('.table-responsive').should(have.text(hellen.name))
