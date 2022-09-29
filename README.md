@@ -1,1 +1,1 @@
-автотест на заполнение и отправку формы https://demoqa.com/automation-practice-form
+Автотест на заполнение и отправку формы https://demoqa.com/automation-practice-form
