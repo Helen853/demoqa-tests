@@ -129,7 +129,6 @@ dmypy.json
 .pyre/
 /.idea
 *.iml
-__init__.py
 .DS_Store
 CACHEDIR.TAG
 .v/
