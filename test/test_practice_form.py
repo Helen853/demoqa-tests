@@ -5,7 +5,6 @@ from selene.support.shared import browser
 
 from test.test_data.users import hellen
 
-
 def test_registration_form():
     browser.open('/automation-practice-form')
 
@@ -21,7 +20,7 @@ def test_registration_form():
     browser.element('.react-datepicker__month-select').type(hellen.birth_month)
     browser.element('.react-datepicker__year-select').type(hellen.birth_year)
     browser.element(f'.react-datepicker__day--0{hellen.birth_day}').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('test_data/qa-2-min.png'))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('../resources/qa-2-min.png'))
     browser.element('#currentAddress').type(hellen.current_address)
     browser.element('#react-select-3-input').type(hellen.state).press_enter()
     browser.element('#react-select-4-input').type(hellen.city).press_enter()
