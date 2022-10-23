@@ -1,45 +1,40 @@
-import os.path
-
-from selene import have, be
-from selene.support.shared import browser
-
 from test.test_data.users import hellen
+from model.pages.registration_form import *
+from model.controls.date import *
+
 
 def test_registration_form():
-    browser.open('/automation-practice-form')
+    # GIVEN
+    given_opened()
 
     # ARRANGE
-    browser.element('#firstName').type(hellen.name)
-    browser.element('#lastName').type(hellen.last_name)
-    browser.element('#userEmail').type(hellen.email)
-    browser.all('[for^=gender-radio]').by(
-        have.exact_text(hellen.gender.value)
-    ).first.click()
-    browser.element('#userNumber').type(hellen.user_number)
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').type(hellen.birth_month)
-    browser.element('.react-datepicker__year-select').type(hellen.birth_year)
-    browser.element(f'.react-datepicker__day--0{hellen.birth_day}').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('../resources/qa-2-min.png'))
-    browser.element('#currentAddress').type(hellen.current_address)
-    browser.element('#react-select-3-input').type(hellen.state).press_enter()
-    browser.element('#react-select-4-input').type(hellen.city).press_enter()
-    browser.element('[for=hobbies-checkbox-1]').click()
-
-    for subject in hellen.subjects:
-        browser.element('#subjectsInput').type(hellen.subjects).press_enter()
-
-    browser.element('#submit').press_enter()
+    set_first_name(hellen.name)
+    set_last_name(hellen.last_name)
+    set_email(hellen.email)
+    set_gender(hellen.gender)
+    set_number(hellen.user_number)
+    #date_picker(hellen.birth_month, hellen.birth_year, hellen.birth_day)
+    date_birth(hellen.date_of_birth)
+    upload_picture('../resources/qa-2-min.png')
+    set_adress(hellen.current_address)
+    set_state_dropdown(hellen.state)
+    set_city(hellen.city)
+    set_hobbies()
+    add_subjects(hellen.subjects)
+    submit_form()
 
     # ACT
-    browser.element('#example-modal-sizes-title-lg').should(be.visible).should(
-        have.text('Thanks for submitting the form'))
-    browser.element('.table-responsive').should(have.text(hellen.name))
-    browser.element('.table-responsive').should(have.text(hellen.email))
-    browser.element('.table-responsive').should(have.text(hellen.gender.value))
-    browser.element('.table-responsive').should(have.text(hellen.user_number))
-    browser.element('.table-responsive').should(have.text(hellen.date_of_birth))
-    browser.element('.table-responsive').should(have.text(hellen.subjects))
-    browser.element('.table-responsive').should(have.text(hellen.hobbies))
-    browser.element('.table-responsive').should(have.text(hellen.current_address))
-    browser.element('.table-responsive').should(have.text(f'{hellen.state} {hellen.city}'))
+    should_have_submitted(
+        [
+            ('Student Name', f'{hellen.name} {hellen.last_name}'),
+            ('Student Email', hellen.email),
+            ('Gender', hellen.gender.value),
+            ('Mobile', hellen.user_number),
+            ('Date of Birth', hellen.date_of_birth),
+            ('Subjects', hellen.subjects),
+            ('Hobbies', hellen.hobbies),
+            ('Picture', hellen.picture_file),
+            ('Address', hellen.current_address),
+            ('State and City', f'{hellen.state} {hellen.city}')
+        ],
+    )
