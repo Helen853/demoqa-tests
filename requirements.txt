@@ -1,2 +1,4 @@
 pytest
 selene>=2.0.b9
+
+selenium~=4.4.3
