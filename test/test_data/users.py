@@ -38,6 +38,7 @@ class User:
     birth_year: str = '1997'
     subjects: Tuple[str] = 'Maths'
     hobbies: Tuple[str] = 'Sports'
+    picture_file: str = 'qa-2-min.png'
     current_address: str = 'vostok'
     state: str = 'NCR'
     city = 'Gurgaon'
