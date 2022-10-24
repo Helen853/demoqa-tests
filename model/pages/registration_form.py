@@ -60,6 +60,7 @@ def add_subjects(values: Tuple[Subject]):
 
 
 def set_state_dropdown(state):
+    browser.element('#state').perform(command.js.scroll_into_view)
     dropdown.select(browser.element('#state'), state)
 
 
