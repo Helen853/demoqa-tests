@@ -1,5 +1,6 @@
 from selene.support.shared import browser
 from selenium.webdriver.common.keys import Keys
+import sys
 
 
 def date_picker(month, year, day):
@@ -13,4 +14,7 @@ def date_picker(month, year, day):
 
 
 def date_birth(date: str):
-    browser.element('#dateOfBirthInput').send_keys(Keys.COMMAND + 'a').type(date).press_enter()
+    if sys.platform == 'win32':
+        browser.element('#dateOfBirthInput').send_keys(Keys.CONTROL + 'a').type(date).press_enter()
+    else:
+        browser.element('#dateOfBirthInput').send_keys(Keys.COMMAND + 'a').type(date).press_enter()
