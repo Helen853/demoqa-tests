@@ -2,4 +2,4 @@ pytest
 selene>=2.0.b9
 
 selenium~=4.4.3
-allure-pytest=2.11.1
+allure-pytest>=2.9.45
