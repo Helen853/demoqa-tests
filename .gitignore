@@ -135,6 +135,7 @@ CACHEDIR.TAG
 .cache/
 /.v
 test/test_data/v/
+.allure-results/
 
 
 
