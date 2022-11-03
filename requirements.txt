@@ -1,5 +1,5 @@
-pytest
-selene>=2.0.b9
+pytest>=7.1.3
+selene>=2.0.b14
 
-selenium~=4.4.3
+selenium=4.4.3
 allure-pytest>=2.9.45
