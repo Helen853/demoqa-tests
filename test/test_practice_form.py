@@ -15,7 +15,7 @@ def test_registration_form():
     set_number(hellen.user_number)
     #date_picker(hellen.birth_month, hellen.birth_year, hellen.birth_day)
     date_birth(hellen.date_of_birth)
-    upload_picture('../resources/qa-2-min.png')
+    upload_picture('resources/qa-2-min.png')
     set_adress(hellen.current_address)
     set_state_dropdown(hellen.state)
     set_city(hellen.city)
