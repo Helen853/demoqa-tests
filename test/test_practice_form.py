@@ -3,27 +3,30 @@ from model.pages.registration_form import *
 from model.controls.date import *
 
 
+@allure.title("Successful fill form")
 def test_registration_form():
     # GIVEN
     given_opened()
 
     # ARRANGE
-    set_first_name(hellen.name)
-    set_last_name(hellen.last_name)
-    set_email(hellen.email)
-    set_gender(hellen.gender)
-    set_number(hellen.user_number)
-    date_picker(hellen.birth_month, hellen.birth_year, hellen.birth_day)
-    #date_birth(hellen.date_of_birth)
-    upload_picture('resources/qa-2-min.png')
-    set_adress(hellen.current_address)
-    set_state_dropdown(hellen.state)
-    set_city(hellen.city)
-    set_hobbies()
-    add_subjects(hellen.subjects)
-    submit_form()
+    with allure.step("Fill form"):
+        set_first_name(hellen.name)
+        set_last_name(hellen.last_name)
+        set_email(hellen.email)
+        set_gender(hellen.gender)
+        set_number(hellen.user_number)
+        date_picker(hellen.birth_month, hellen.birth_year, hellen.birth_day)
+        #date_birth(hellen.date_of_birth)
+        upload_picture('qa-2-min.png')
+        set_adress(hellen.current_address)
+        set_state_dropdown(hellen.state)
+        set_city(hellen.city)
+        set_hobbies()
+        add_subjects(hellen.subjects)
+        submit_form()
 
     # ACT
+    allure.title('Проверка результатов формы')
     should_have_submitted(
         [
             ('Student Name', f'{hellen.name} {hellen.last_name}'),
