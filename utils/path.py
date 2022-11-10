@@ -1,7 +1,11 @@
 from pathlib import Path
 
+import allure
+
 import resources
 
 
-def to_resource(relative_path):
-    return str(Path(resources.__file__).parent.joinpath(relative_path).absolute())
+@allure.step('Строим полный путь до файла')
+def take_path(relative_path: str):
+    path = str(Path(__file__).parent.parent.joinpath('resources').joinpath(relative_path))
+    return path
