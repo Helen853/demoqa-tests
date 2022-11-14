@@ -1,10 +1,28 @@
 from test.test_data.users import hellen
 from model.pages.registration_form import *
 from model.controls.date import *
+from utils import attach
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @allure.title("Successful fill form")
 def test_registration_form():
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "100.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": False
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
+    driver = webdriver.Remote(
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
+        options=options)
+    browser.config.driver = driver
     # GIVEN
     given_opened()
 
@@ -41,3 +59,9 @@ def test_registration_form():
             ('State and City', f'{hellen.state} {hellen.city}')
         ],
     )
+
+
+    attach.add_html(browser)
+    attach.add_screen(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
