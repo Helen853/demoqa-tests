@@ -9,17 +9,6 @@ from selene import Browser, Config
 
 from utils import attach
 
-
-@pytest.fixture(scope='function', autouse=True)
-def test_browser_management():
-    browser.config.base_url = os.getenv('selene.base_url', 'https://demoqa.com')
-    browser.config.browser_name = os.getenv('selene.browser_name', 'chrome')
-    browser.config.hold_browser_open = (
-        os.getenv('selene.hold_browser_open', 'false').lower() == 'true'
-    )
-    browser.config.timeout = float(os.getenv('selene.timeout', '3'))
-
-
 @pytest.fixture(scope='function')
 def setup_chrome():
     options = Options()
@@ -42,3 +31,13 @@ def setup_chrome():
     attach.add_screen(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
+
+
+@pytest.fixture(scope='function', autouse=True)
+def test_browser_management():
+    browser.config.base_url = os.getenv('selene.base_url', 'https://demoqa.com')
+    browser.config.browser_name = os.getenv('selene.browser_name', 'chrome')
+    browser.config.hold_browser_open = (
+        os.getenv('selene.hold_browser_open', 'false').lower() == 'true'
+    )
+    browser.config.timeout = float(os.getenv('selene.timeout', '3'))
