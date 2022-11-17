@@ -4,7 +4,7 @@ from model.controls.date import *
 
 
 @allure.title("Successful fill form")
-def test_registration_form():
+def test_registration_form(setup_chrome):
     # GIVEN
     given_opened()
 
