@@ -4,4 +4,4 @@
 1. деталей реализации всех шагов пользователя на странице заполнения формы регистрации.
 2. технических деталей работы со всеми сложными элементами 
 
-Ссылка на Jenkins report: https://jenkins.autotests.cloud/job/qa_hellen_demoqa_test/32/allure/#suites/a9542fb5c4cb6cbe3950f00910bc21cd/310696d00ae51d61/
+Ссылка на Jenkins Allure report: https://jenkins.autotests.cloud/job/qa_hellen_demoqa_test/32/allure/#suites/a9542fb5c4cb6cbe3950f00910bc21cd/310696d00ae51d61/
